@@ -114,3 +114,7 @@ To prevent abuse, we implemented budget logic. Since the app needs to be strictl
 - **5.3 Stateless Design:** Migrating shared configurations and memory objects (like conversation history variables) from local machine mapping (e.g., `conversation_history = {}`) into an external database caching layer like Redis is mandatory. Without it, replication on separate cloned containers will not share memory variables, breaking session continuity.
 - **5.4 Load Balancing:** Wrapping Nginx directly in front of `app:8000` nodes natively enables routing and distributing client requests. Modifying orchestration logic via Docker Compose's `--scale agent=3` lets us create multiple clone containers behind Nginx to handle unexpected connection bursts and remove single points of failure.
 - **5.5 Testing Statelessness:** Simulating random failure testing by firing consecutive requests while intentionally killing individual node instances verifies that requests seamlessly re-route to surviving instances, maintaining the exact conversation state and demonstrating solid reliability properties.
+
+## Part 6: Lab-complete
+Domain link: https://api-production-690f.up.railway.app
+
